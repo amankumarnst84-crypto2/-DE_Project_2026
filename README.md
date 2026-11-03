@@ -22,12 +22,12 @@
 
 | Role | Name | Enrollment No. | GitHub Username |
 |------|------|----------------|-----------------|
-| Group Lead |aman agrawal      | 2501010051|amankumarnst84-crypto2 |
-| Member 2   | Rehaan Dhillon   | 2501010372| rehaandhillon12345-ai|
-| Member 3   | Prtishtha Khurana| 2501010360| Prtishtha31-k|
-| Member 4   | Nikunj Rohilla   | 2501010589| nikunjr25589-collab|
+| Group Lead | aman agrawal     | 2501010051| amankumarnst84-crypto2|
+| Member 2   | Rehaan Dhillon   | 2501010372| rehaandhillon12345-ai |
+| Member 3   | Prtishtha Khurana| 2501010360| Prtishtha31-k         |
+| Member 4   | Nikunj Rohilla   | 2501010589| nikunjr25589-collab   |
 
-**Team No.:** ____ · **Section:** ____ · **Repository URL:** ____
+**Team No.:** T0138  **Section:** D **Repository URL:** https://github.com/amankumarnst84-crypto2/-DE_Project_2026
 
 ---
 
