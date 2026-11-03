@@ -22,10 +22,10 @@
 
 | Role | Name | Enrollment No. | GitHub Username |
 |------|------|----------------|-----------------|
-| Group Lead | | | |
-| Member 2 | | | |
-| Member 3 | | | |
-| Member 4 | | | |
+| Group Lead |aman agrawal      | 2501010051|amankumarnst84-crypto2 |
+| Member 2   | Rehaan Dhillon   | 2501010372| rehaandhillon12345-ai|
+| Member 3   | Prtishtha Khurana| 2501010360| Prtishtha31-k|
+| Member 4   | Nikunj Rohilla   | 2501010589| nikunjr25589-collab|
 
 **Team No.:** ____ · **Section:** ____ · **Repository URL:** ____
 
