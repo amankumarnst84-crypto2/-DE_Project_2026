@@ -1,3 +1,6 @@
 seed_data/
 large_data/
 .DS_Store
+
+# Separate AP repository deliverable (local handoff copy)
+AP_submission/

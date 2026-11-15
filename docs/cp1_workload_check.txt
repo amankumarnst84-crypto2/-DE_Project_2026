@@ -1,0 +1,30 @@
+R01: planned
+R02: planned
+R03: planned
+R04: planned
+R05: planned
+R06: planned
+R07: planned
+R08: planned
+R09: planned
+R10: planned
+R11: planned
+R12: planned
+R13: planned
+R14: planned
+R15: planned
+R16: planned
+R17: planned
+R18: planned
+R19: planned
+R20: planned
+R21: planned
+R22: planned
+R23: planned
+R24: planned
+R25: planned
+W01: executed and rolled back
+W02: executed and rolled back
+W03: executed and rolled back
+W04: executed and rolled back
+W05: executed and rolled back

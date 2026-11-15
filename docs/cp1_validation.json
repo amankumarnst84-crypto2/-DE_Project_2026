@@ -1,0 +1,182 @@
+{
+  "engine": "PGlite (embedded PostgreSQL; not native psql)",
+  "version": {
+    "version": "PostgreSQL 18.6 (PGlite 0.5.16) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a), 32-bit"
+  },
+  "results": [
+    [],
+    [],
+    [
+      {
+        "table_name": "cities",
+        "actual": 10,
+        "expected": 10,
+        "delta": 0
+      },
+      {
+        "table_name": "categories",
+        "actual": 12,
+        "expected": 12,
+        "delta": 0
+      },
+      {
+        "table_name": "boost_packages",
+        "actual": 6,
+        "expected": 6,
+        "delta": 0
+      },
+      {
+        "table_name": "users",
+        "actual": 50000,
+        "expected": 50000,
+        "delta": 0
+      },
+      {
+        "table_name": "listings",
+        "actual": 120000,
+        "expected": 120000,
+        "delta": 0
+      },
+      {
+        "table_name": "chat_threads",
+        "actual": 59855,
+        "expected": 59855,
+        "delta": 0
+      },
+      {
+        "table_name": "chat_messages",
+        "actual": 209529,
+        "expected": 209529,
+        "delta": 0
+      },
+      {
+        "table_name": "offers",
+        "actual": 19943,
+        "expected": 19943,
+        "delta": 0
+      },
+      {
+        "table_name": "favourites",
+        "actual": 70000,
+        "expected": 70000,
+        "delta": 0
+      },
+      {
+        "table_name": "reports",
+        "actual": 7999,
+        "expected": 7999,
+        "delta": 0
+      },
+      {
+        "table_name": "seller_ratings",
+        "actual": 11244,
+        "expected": 11244,
+        "delta": 0
+      }
+    ],
+    [
+      {
+        "check_name": "chat_buyer_is_seller",
+        "violations": 0
+      },
+      {
+        "check_name": "message_sender_not_participant",
+        "violations": 0
+      },
+      {
+        "check_name": "sold_before_posted",
+        "violations": 0
+      },
+      {
+        "check_name": "rating_seller_mismatch",
+        "violations": 0
+      },
+      {
+        "check_name": "offer_buyer_is_seller",
+        "violations": 0
+      },
+      {
+        "check_name": "message_before_thread",
+        "violations": 0
+      },
+      {
+        "check_name": "rating_before_sale",
+        "violations": 0
+      }
+    ],
+    [
+      {
+        "indexname": "boost_packages_package_name_key",
+        "indexdef": "CREATE UNIQUE INDEX boost_packages_package_name_key ON olx.boost_packages USING btree (package_name)"
+      },
+      {
+        "indexname": "boost_packages_pkey",
+        "indexdef": "CREATE UNIQUE INDEX boost_packages_pkey ON olx.boost_packages USING btree (package_id)"
+      },
+      {
+        "indexname": "categories_pkey",
+        "indexdef": "CREATE UNIQUE INDEX categories_pkey ON olx.categories USING btree (category_id)"
+      },
+      {
+        "indexname": "chat_messages_pkey",
+        "indexdef": "CREATE UNIQUE INDEX chat_messages_pkey ON olx.chat_messages USING btree (message_id)"
+      },
+      {
+        "indexname": "chat_threads_listing_id_buyer_id_key",
+        "indexdef": "CREATE UNIQUE INDEX chat_threads_listing_id_buyer_id_key ON olx.chat_threads USING btree (listing_id, buyer_id)"
+      },
+      {
+        "indexname": "chat_threads_pkey",
+        "indexdef": "CREATE UNIQUE INDEX chat_threads_pkey ON olx.chat_threads USING btree (thread_id)"
+      },
+      {
+        "indexname": "cities_city_name_state_key",
+        "indexdef": "CREATE UNIQUE INDEX cities_city_name_state_key ON olx.cities USING btree (city_name, state)"
+      },
+      {
+        "indexname": "cities_pkey",
+        "indexdef": "CREATE UNIQUE INDEX cities_pkey ON olx.cities USING btree (city_id)"
+      },
+      {
+        "indexname": "favourites_pkey",
+        "indexdef": "CREATE UNIQUE INDEX favourites_pkey ON olx.favourites USING btree (user_id, listing_id)"
+      },
+      {
+        "indexname": "listings_pkey",
+        "indexdef": "CREATE UNIQUE INDEX listings_pkey ON olx.listings USING btree (listing_id)"
+      },
+      {
+        "indexname": "offers_pkey",
+        "indexdef": "CREATE UNIQUE INDEX offers_pkey ON olx.offers USING btree (offer_id)"
+      },
+      {
+        "indexname": "reports_listing_id_reporter_id_key",
+        "indexdef": "CREATE UNIQUE INDEX reports_listing_id_reporter_id_key ON olx.reports USING btree (listing_id, reporter_id)"
+      },
+      {
+        "indexname": "reports_pkey",
+        "indexdef": "CREATE UNIQUE INDEX reports_pkey ON olx.reports USING btree (report_id)"
+      },
+      {
+        "indexname": "seller_ratings_listing_id_rater_id_key",
+        "indexdef": "CREATE UNIQUE INDEX seller_ratings_listing_id_rater_id_key ON olx.seller_ratings USING btree (listing_id, rater_id)"
+      },
+      {
+        "indexname": "seller_ratings_pkey",
+        "indexdef": "CREATE UNIQUE INDEX seller_ratings_pkey ON olx.seller_ratings USING btree (rating_id)"
+      },
+      {
+        "indexname": "users_email_key",
+        "indexdef": "CREATE UNIQUE INDEX users_email_key ON olx.users USING btree (email)"
+      },
+      {
+        "indexname": "users_phone_key",
+        "indexdef": "CREATE UNIQUE INDEX users_phone_key ON olx.users USING btree (phone)"
+      },
+      {
+        "indexname": "users_pkey",
+        "indexdef": "CREATE UNIQUE INDEX users_pkey ON olx.users USING btree (user_id)"
+      }
+    ]
+  ]
+}

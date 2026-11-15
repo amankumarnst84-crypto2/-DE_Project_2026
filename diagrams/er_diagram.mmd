@@ -1,0 +1,113 @@
+erDiagram
+  cities {
+    integer city_id PK
+    text city_name
+    text state
+  }
+  categories {
+    integer category_id PK
+    text category_name
+    integer parent_id FK
+  }
+  boost_packages {
+    integer package_id PK
+    text package_name
+    numeric price
+    smallint duration_days
+  }
+  users {
+    bigint user_id PK
+    text full_name
+    varchar phone
+    text email
+    integer city_id FK
+    boolean phone_verified
+    boolean is_banned
+    timestamptz joined_at
+  }
+  listings {
+    bigint listing_id PK
+    bigint seller_id FK
+    integer category_id FK
+    text title
+    text description
+    numeric price
+    boolean is_negotiable
+    text item_condition
+    jsonb attributes
+    integer city_id FK
+    text locality
+    numeric latitude
+    numeric longitude
+    smallint image_count
+    bigint view_count
+    integer boost_package_id FK
+    text status
+    timestamptz posted_at
+    timestamptz expires_at
+    timestamptz sold_at
+  }
+  chat_threads {
+    bigint thread_id PK
+    bigint listing_id FK
+    bigint buyer_id FK
+    timestamptz created_at
+  }
+  chat_messages {
+    bigint message_id PK
+    bigint thread_id FK
+    bigint sender_id FK
+    text body
+    timestamptz sent_at
+    boolean is_read
+  }
+  offers {
+    bigint offer_id PK
+    bigint listing_id FK
+    bigint buyer_id FK
+    numeric offer_price
+    text status
+    timestamptz created_at
+    timestamptz responded_at
+  }
+  favourites {
+    bigint user_id PK,FK
+    bigint listing_id PK,FK
+    timestamptz saved_at
+  }
+  reports {
+    bigint report_id PK
+    bigint listing_id FK
+    bigint reporter_id FK
+    text reason
+    timestamptz created_at
+    text status
+  }
+  seller_ratings {
+    bigint rating_id PK
+    bigint seller_id FK
+    bigint rater_id FK
+    bigint listing_id FK
+    smallint stars
+    text comment
+    timestamptz created_at
+  }
+  categories |o--o{ categories : "parent_id"
+  cities ||--o{ users : "city_id"
+  users ||--o{ listings : "seller_id"
+  categories ||--o{ listings : "category_id"
+  cities ||--o{ listings : "city_id"
+  boost_packages |o--o{ listings : "boost_package_id"
+  listings ||--o{ chat_threads : "listing_id"
+  users ||--o{ chat_threads : "buyer_id"
+  chat_threads ||--o{ chat_messages : "thread_id"
+  users ||--o{ chat_messages : "sender_id"
+  listings ||--o{ offers : "listing_id"
+  users ||--o{ offers : "buyer_id"
+  users ||--o{ favourites : "user_id"
+  listings ||--o{ favourites : "listing_id"
+  listings ||--o{ reports : "listing_id"
+  users ||--o{ reports : "reporter_id"
+  users ||--o{ seller_ratings : "seller_id"
+  users ||--o{ seller_ratings : "rater_id"
+  listings ||--o{ seller_ratings : "listing_id"

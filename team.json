@@ -4,20 +4,27 @@
   "mentor": "Vishnu",
   "members": [
     {
-      "name": "Aman Agrawal",
-      "github": "amankumarnst84-crypto2"
-    },
-    {
       "name": "Rehaan Dhillon",
-      "github": "rehaandhillon12345-ai"
+      "github": "rehaandhillon12345-ai",
+      "enrollment_no": "2501010372"
     },
     {
       "name": "Prtishtha Khurana",
-      "github": "Prtishtha31-k"
+      "github": "Prtishtha31-k",
+      "enrollment_no": "2501010360"
     },
     {
       "name": "Nikunj Rohilla",
-      "github": "nikunjr25589-collab"
+      "github": "nikunjr25589-collab",
+      "enrollment_no": "2501010589"
     }
-  ]
+  ],
+  "team_number": "T0138",
+  "group_lead": {
+    "name": "Aman Agrawal",
+    "github": "amankumarnst84-crypto2",
+    "enrollment_no": "2501010051"
+  },
+  "postgres_version": "",
+  "laptop_used_for_benchmarks": ""
 }
