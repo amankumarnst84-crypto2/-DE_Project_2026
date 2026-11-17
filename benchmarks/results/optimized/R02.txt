@@ -1,0 +1,45 @@
+=== R02 run 1 ===
+Sort  (cost=8.17..8.18 rows=1 width=107) (actual time=0.063..0.063 rows=5.00 loops=1)
+  Sort Key: price
+  Sort Method: quicksort  Memory: 26kB
+  Buffers: shared hit=16
+  ->  Index Scan using idx_listings_active_car_filters on listings  (cost=0.14..8.16 rows=1 width=107) (actual time=0.012..0.047 rows=5.00 loops=1)
+        Index Cond: (((attributes ->> 'year'::text))::integer >= 2018)
+        Filter: (((attributes ->> 'km_driven'::text))::integer <= 60000)
+        Rows Removed by Filter: 7
+        Index Searches: 1
+        Buffers: shared hit=13
+Planning:
+  Buffers: shared hit=409
+Planning Time: 0.847 ms
+Execution Time: 0.093 ms
+=== R02 run 2 ===
+Sort  (cost=8.17..8.18 rows=1 width=107) (actual time=0.053..0.053 rows=5.00 loops=1)
+  Sort Key: price
+  Sort Method: quicksort  Memory: 26kB
+  Buffers: shared hit=16
+  ->  Index Scan using idx_listings_active_car_filters on listings  (cost=0.14..8.16 rows=1 width=107) (actual time=0.010..0.039 rows=5.00 loops=1)
+        Index Cond: (((attributes ->> 'year'::text))::integer >= 2018)
+        Filter: (((attributes ->> 'km_driven'::text))::integer <= 60000)
+        Rows Removed by Filter: 7
+        Index Searches: 1
+        Buffers: shared hit=13
+Planning:
+  Buffers: shared hit=409
+Planning Time: 0.734 ms
+Execution Time: 0.072 ms
+=== R02 run 3 ===
+Sort  (cost=8.17..8.18 rows=1 width=107) (actual time=0.048..0.049 rows=5.00 loops=1)
+  Sort Key: price
+  Sort Method: quicksort  Memory: 26kB
+  Buffers: shared hit=16
+  ->  Index Scan using idx_listings_active_car_filters on listings  (cost=0.14..8.16 rows=1 width=107) (actual time=0.009..0.036 rows=5.00 loops=1)
+        Index Cond: (((attributes ->> 'year'::text))::integer >= 2018)
+        Filter: (((attributes ->> 'km_driven'::text))::integer <= 60000)
+        Rows Removed by Filter: 7
+        Index Searches: 1
+        Buffers: shared hit=13
+Planning:
+  Buffers: shared hit=409
+Planning Time: 0.681 ms
+Execution Time: 0.064 ms

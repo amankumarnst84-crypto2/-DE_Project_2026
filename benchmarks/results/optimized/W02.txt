@@ -1,0 +1,57 @@
+=== W02 run 1 ===
+Update on listings  (cost=8.74..16.76 rows=0 width=0) (actual time=0.231..0.231 rows=0.00 loops=1)
+  Buffers: shared hit=99
+  InitPlan 1
+    ->  Aggregate  (cost=8.44..8.45 rows=1 width=8) (actual time=0.052..0.052 rows=1.00 loops=1)
+          Buffers: shared hit=11
+          ->  Index Only Scan using idx_listings_seller_status_views on listings listings_1  (cost=0.42..8.44 rows=1 width=8) (actual time=0.047..0.049 rows=1.00 loops=1)
+                Index Cond: ((seller_id = 1042) AND (status = 'ACTIVE'::text))
+                Heap Fetches: 4
+                Index Searches: 1
+                Buffers: shared hit=11
+  ->  Index Scan using listings_pkey on listings  (cost=0.29..8.31 rows=1 width=46) (actual time=0.061..0.061 rows=1.00 loops=1)
+        Index Cond: (listing_id = (InitPlan 1).col1)
+        Index Searches: 1
+        Buffers: shared hit=14
+Planning:
+  Buffers: shared hit=382
+Planning Time: 0.566 ms
+Execution Time: 0.291 ms
+=== W02 run 2 ===
+Update on listings  (cost=8.74..16.76 rows=0 width=0) (actual time=0.235..0.235 rows=0.00 loops=1)
+  Buffers: shared hit=100 dirtied=1
+  InitPlan 1
+    ->  Aggregate  (cost=8.44..8.45 rows=1 width=8) (actual time=0.046..0.046 rows=1.00 loops=1)
+          Buffers: shared hit=8
+          ->  Index Only Scan using idx_listings_seller_status_views on listings listings_1  (cost=0.42..8.44 rows=1 width=8) (actual time=0.042..0.042 rows=1.00 loops=1)
+                Index Cond: ((seller_id = 1042) AND (status = 'ACTIVE'::text))
+                Heap Fetches: 1
+                Index Searches: 1
+                Buffers: shared hit=8
+  ->  Index Scan using listings_pkey on listings  (cost=0.29..8.31 rows=1 width=46) (actual time=0.056..0.057 rows=1.00 loops=1)
+        Index Cond: (listing_id = (InitPlan 1).col1)
+        Index Searches: 1
+        Buffers: shared hit=13
+Planning:
+  Buffers: shared hit=382
+Planning Time: 0.575 ms
+Execution Time: 0.287 ms
+=== W02 run 3 ===
+Update on listings  (cost=8.74..16.76 rows=0 width=0) (actual time=0.243..0.243 rows=0.00 loops=1)
+  Buffers: shared hit=101 dirtied=1
+  InitPlan 1
+    ->  Aggregate  (cost=8.44..8.45 rows=1 width=8) (actual time=0.045..0.045 rows=1.00 loops=1)
+          Buffers: shared hit=8
+          ->  Index Only Scan using idx_listings_seller_status_views on listings listings_1  (cost=0.42..8.44 rows=1 width=8) (actual time=0.042..0.042 rows=1.00 loops=1)
+                Index Cond: ((seller_id = 1042) AND (status = 'ACTIVE'::text))
+                Heap Fetches: 1
+                Index Searches: 1
+                Buffers: shared hit=8
+  ->  Index Scan using listings_pkey on listings  (cost=0.29..8.31 rows=1 width=46) (actual time=0.056..0.057 rows=1.00 loops=1)
+        Index Cond: (listing_id = (InitPlan 1).col1)
+        Index Searches: 1
+        Buffers: shared hit=13
+Planning:
+  Buffers: shared hit=382
+Planning Time: 0.573 ms
+Execution Time: 0.293 ms
