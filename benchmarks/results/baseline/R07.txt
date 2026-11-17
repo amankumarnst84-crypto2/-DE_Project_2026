@@ -1,0 +1,87 @@
+=== R07 run 1 ===
+Aggregate  (cost=5865.83..5865.84 rows=1 width=8) (actual time=5.364..5.916 rows=1.00 loops=1)
+  Buffers: shared hit=4014
+  ->  Gather  (cost=1000.58..5865.83 rows=1 width=0) (actual time=5.363..5.914 rows=0.00 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=4014
+        ->  Nested Loop  (cost=0.58..4865.73 rows=1 width=0) (actual time=4.305..4.305 rows=0.00 loops=2)
+              Buffers: shared hit=4014
+              ->  Nested Loop  (cost=0.29..4780.42 rows=131 width=16) (actual time=0.032..4.186 rows=129.00 loops=2)
+                    Buffers: shared hit=3239
+                    ->  Parallel Seq Scan on chat_messages m  (cost=0.00..4004.65 rows=131 width=8) (actual time=0.025..3.854 rows=129.00 loops=2)
+                          Filter: ((NOT is_read) AND (sender_id <> 1042))
+                          Rows Removed by Filter: 104636
+                          Buffers: shared hit=2464
+                    ->  Index Scan using chat_threads_pkey on chat_threads t  (cost=0.29..5.92 rows=1 width=24) (actual time=0.002..0.002 rows=1.00 loops=258)
+                          Index Cond: (thread_id = m.thread_id)
+                          Index Searches: 258
+                          Buffers: shared hit=775
+              ->  Index Scan using listings_pkey on listings l  (cost=0.29..0.64 rows=1 width=16) (actual time=0.001..0.001 rows=0.00 loops=258)
+                    Index Cond: (listing_id = t.listing_id)
+                    Filter: ((t.buyer_id = 1042) OR (seller_id = 1042))
+                    Rows Removed by Filter: 1
+                    Index Searches: 258
+                    Buffers: shared hit=775
+Planning:
+  Buffers: shared hit=283
+Planning Time: 0.463 ms
+Execution Time: 5.950 ms
+=== R07 run 2 ===
+Aggregate  (cost=5865.83..5865.84 rows=1 width=8) (actual time=4.855..5.428 rows=1.00 loops=1)
+  Buffers: shared hit=4014
+  ->  Gather  (cost=1000.58..5865.83 rows=1 width=0) (actual time=4.853..5.426 rows=0.00 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=4014
+        ->  Nested Loop  (cost=0.58..4865.73 rows=1 width=0) (actual time=3.904..3.905 rows=0.00 loops=2)
+              Buffers: shared hit=4014
+              ->  Nested Loop  (cost=0.29..4780.42 rows=131 width=16) (actual time=0.034..3.796 rows=129.00 loops=2)
+                    Buffers: shared hit=3239
+                    ->  Parallel Seq Scan on chat_messages m  (cost=0.00..4004.65 rows=131 width=8) (actual time=0.029..3.542 rows=129.00 loops=2)
+                          Filter: ((NOT is_read) AND (sender_id <> 1042))
+                          Rows Removed by Filter: 104636
+                          Buffers: shared hit=2464
+                    ->  Index Scan using chat_threads_pkey on chat_threads t  (cost=0.29..5.92 rows=1 width=24) (actual time=0.002..0.002 rows=1.00 loops=258)
+                          Index Cond: (thread_id = m.thread_id)
+                          Index Searches: 258
+                          Buffers: shared hit=775
+              ->  Index Scan using listings_pkey on listings l  (cost=0.29..0.64 rows=1 width=16) (actual time=0.001..0.001 rows=0.00 loops=258)
+                    Index Cond: (listing_id = t.listing_id)
+                    Filter: ((t.buyer_id = 1042) OR (seller_id = 1042))
+                    Rows Removed by Filter: 1
+                    Index Searches: 258
+                    Buffers: shared hit=775
+Planning:
+  Buffers: shared hit=283
+Planning Time: 0.432 ms
+Execution Time: 5.461 ms
+=== R07 run 3 ===
+Aggregate  (cost=5865.83..5865.84 rows=1 width=8) (actual time=4.733..5.266 rows=1.00 loops=1)
+  Buffers: shared hit=4014
+  ->  Gather  (cost=1000.58..5865.83 rows=1 width=0) (actual time=4.731..5.265 rows=0.00 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=4014
+        ->  Nested Loop  (cost=0.58..4865.73 rows=1 width=0) (actual time=3.840..3.840 rows=0.00 loops=2)
+              Buffers: shared hit=4014
+              ->  Nested Loop  (cost=0.29..4780.42 rows=131 width=16) (actual time=0.062..3.735 rows=129.00 loops=2)
+                    Buffers: shared hit=3239
+                    ->  Parallel Seq Scan on chat_messages m  (cost=0.00..4004.65 rows=131 width=8) (actual time=0.058..3.480 rows=129.00 loops=2)
+                          Filter: ((NOT is_read) AND (sender_id <> 1042))
+                          Rows Removed by Filter: 104636
+                          Buffers: shared hit=2464
+                    ->  Index Scan using chat_threads_pkey on chat_threads t  (cost=0.29..5.92 rows=1 width=24) (actual time=0.002..0.002 rows=1.00 loops=258)
+                          Index Cond: (thread_id = m.thread_id)
+                          Index Searches: 258
+                          Buffers: shared hit=775
+              ->  Index Scan using listings_pkey on listings l  (cost=0.29..0.64 rows=1 width=16) (actual time=0.001..0.001 rows=0.00 loops=258)
+                    Index Cond: (listing_id = t.listing_id)
+                    Filter: ((t.buyer_id = 1042) OR (seller_id = 1042))
+                    Rows Removed by Filter: 1
+                    Index Searches: 258
+                    Buffers: shared hit=775
+Planning:
+  Buffers: shared hit=283
+Planning Time: 0.427 ms
+Execution Time: 5.297 ms

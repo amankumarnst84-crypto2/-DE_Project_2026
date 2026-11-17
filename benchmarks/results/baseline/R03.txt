@@ -1,0 +1,45 @@
+=== R03 run 1 ===
+Limit  (cost=6364.07..6364.17 rows=40 width=40) (actual time=47.742..47.744 rows=40.00 loops=1)
+  Buffers: shared hit=4555
+  ->  Sort  (cost=6364.07..6365.03 rows=382 width=40) (actual time=47.741..47.742 rows=40.00 loops=1)
+        Sort Key: price
+        Sort Method: top-N heapsort  Memory: 30kB
+        Buffers: shared hit=4555
+        ->  Seq Scan on listings  (cost=0.00..6352.00 rows=382 width=40) (actual time=0.093..47.656 rows=375.00 loops=1)
+              Filter: ((title ~~* '%iphone 13%'::text) AND (status = 'ACTIVE'::text))
+              Rows Removed by Filter: 119625
+              Buffers: shared hit=4552
+Planning:
+  Buffers: shared hit=129
+Planning Time: 1.294 ms
+Execution Time: 47.758 ms
+=== R03 run 2 ===
+Limit  (cost=6364.07..6364.17 rows=40 width=40) (actual time=44.008..44.011 rows=40.00 loops=1)
+  Buffers: shared hit=4555
+  ->  Sort  (cost=6364.07..6365.03 rows=382 width=40) (actual time=44.008..44.009 rows=40.00 loops=1)
+        Sort Key: price
+        Sort Method: top-N heapsort  Memory: 30kB
+        Buffers: shared hit=4555
+        ->  Seq Scan on listings  (cost=0.00..6352.00 rows=382 width=40) (actual time=0.078..43.931 rows=375.00 loops=1)
+              Filter: ((title ~~* '%iphone 13%'::text) AND (status = 'ACTIVE'::text))
+              Rows Removed by Filter: 119625
+              Buffers: shared hit=4552
+Planning:
+  Buffers: shared hit=129
+Planning Time: 0.270 ms
+Execution Time: 44.023 ms
+=== R03 run 3 ===
+Limit  (cost=6364.07..6364.17 rows=40 width=40) (actual time=44.460..44.462 rows=40.00 loops=1)
+  Buffers: shared hit=4555
+  ->  Sort  (cost=6364.07..6365.03 rows=382 width=40) (actual time=44.459..44.460 rows=40.00 loops=1)
+        Sort Key: price
+        Sort Method: top-N heapsort  Memory: 30kB
+        Buffers: shared hit=4555
+        ->  Seq Scan on listings  (cost=0.00..6352.00 rows=382 width=40) (actual time=0.082..44.391 rows=375.00 loops=1)
+              Filter: ((title ~~* '%iphone 13%'::text) AND (status = 'ACTIVE'::text))
+              Rows Removed by Filter: 119625
+              Buffers: shared hit=4552
+Planning:
+  Buffers: shared hit=129
+Planning Time: 0.254 ms
+Execution Time: 44.473 ms

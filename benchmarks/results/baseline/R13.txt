@@ -1,0 +1,36 @@
+=== R13 run 1 ===
+Seq Scan on boost_packages b  (cost=6052.00..6053.07 rows=3 width=26) (actual time=13.806..13.807 rows=0.00 loops=1)
+  Filter: (NOT (ANY (package_id = (hashed SubPlan 1).col1)))
+  Rows Removed by Filter: 6
+  Buffers: shared hit=4553
+  SubPlan 1
+    ->  Seq Scan on listings l  (cost=0.00..5752.00 rows=120000 width=4) (actual time=0.010..9.344 rows=120000.00 loops=1)
+          Buffers: shared hit=4552
+Planning:
+  Buffers: shared hit=98
+Planning Time: 0.212 ms
+Execution Time: 13.842 ms
+=== R13 run 2 ===
+Seq Scan on boost_packages b  (cost=6052.00..6053.07 rows=3 width=26) (actual time=13.583..13.584 rows=0.00 loops=1)
+  Filter: (NOT (ANY (package_id = (hashed SubPlan 1).col1)))
+  Rows Removed by Filter: 6
+  Buffers: shared hit=4553
+  SubPlan 1
+    ->  Seq Scan on listings l  (cost=0.00..5752.00 rows=120000 width=4) (actual time=0.009..9.159 rows=120000.00 loops=1)
+          Buffers: shared hit=4552
+Planning:
+  Buffers: shared hit=98
+Planning Time: 0.180 ms
+Execution Time: 13.616 ms
+=== R13 run 3 ===
+Seq Scan on boost_packages b  (cost=6052.00..6053.07 rows=3 width=26) (actual time=13.666..13.666 rows=0.00 loops=1)
+  Filter: (NOT (ANY (package_id = (hashed SubPlan 1).col1)))
+  Rows Removed by Filter: 6
+  Buffers: shared hit=4553
+  SubPlan 1
+    ->  Seq Scan on listings l  (cost=0.00..5752.00 rows=120000 width=4) (actual time=0.009..9.165 rows=120000.00 loops=1)
+          Buffers: shared hit=4552
+Planning:
+  Buffers: shared hit=98
+Planning Time: 0.192 ms
+Execution Time: 13.700 ms

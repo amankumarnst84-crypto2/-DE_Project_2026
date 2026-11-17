@@ -1,0 +1,63 @@
+=== R01 run 1 ===
+Limit  (cost=6677.27..6680.65 rows=29 width=70) (actual time=9.885..11.038 rows=40.00 loops=1)
+  Buffers: shared hit=4628
+  ->  Gather Merge  (cost=6677.27..6680.65 rows=29 width=70) (actual time=9.884..11.034 rows=40.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=4628
+        ->  Sort  (cost=5677.25..5677.28 rows=12 width=70) (actual time=7.334..7.335 rows=31.67 loops=3)
+              Sort Key: posted_at DESC
+              Sort Method: quicksort  Memory: 30kB
+              Buffers: shared hit=4628
+              Worker 0:  Sort Method: quicksort  Memory: 30kB
+              Worker 1:  Sort Method: quicksort  Memory: 30kB
+              ->  Parallel Seq Scan on listings  (cost=0.00..5677.03 rows=12 width=70) (actual time=0.306..7.294 rows=59.67 loops=3)
+                    Filter: ((price >= '300000'::numeric) AND (price <= '600000'::numeric) AND (category_id = 2) AND (city_id = 1) AND (status = 'ACTIVE'::text))
+                    Rows Removed by Filter: 39940
+                    Buffers: shared hit=4552
+Planning:
+  Buffers: shared hit=155
+Planning Time: 0.355 ms
+Execution Time: 11.067 ms
+=== R01 run 2 ===
+Limit  (cost=6677.27..6680.65 rows=29 width=70) (actual time=8.005..8.933 rows=40.00 loops=1)
+  Buffers: shared hit=4628
+  ->  Gather Merge  (cost=6677.27..6680.65 rows=29 width=70) (actual time=8.005..8.923 rows=40.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=4628
+        ->  Sort  (cost=5677.25..5677.28 rows=12 width=70) (actual time=5.945..5.946 rows=32.33 loops=3)
+              Sort Key: posted_at DESC
+              Sort Method: quicksort  Memory: 31kB
+              Buffers: shared hit=4628
+              Worker 0:  Sort Method: quicksort  Memory: 30kB
+              Worker 1:  Sort Method: quicksort  Memory: 30kB
+              ->  Parallel Seq Scan on listings  (cost=0.00..5677.03 rows=12 width=70) (actual time=0.453..5.906 rows=59.67 loops=3)
+                    Filter: ((price >= '300000'::numeric) AND (price <= '600000'::numeric) AND (category_id = 2) AND (city_id = 1) AND (status = 'ACTIVE'::text))
+                    Rows Removed by Filter: 39940
+                    Buffers: shared hit=4552
+Planning:
+  Buffers: shared hit=155
+Planning Time: 0.293 ms
+Execution Time: 8.957 ms
+=== R01 run 3 ===
+Limit  (cost=6677.27..6680.65 rows=29 width=70) (actual time=7.099..7.884 rows=40.00 loops=1)
+  Buffers: shared hit=4628
+  ->  Gather Merge  (cost=6677.27..6680.65 rows=29 width=70) (actual time=7.098..7.873 rows=40.00 loops=1)
+        Workers Planned: 2
+        Workers Launched: 2
+        Buffers: shared hit=4628
+        ->  Sort  (cost=5677.25..5677.28 rows=12 width=70) (actual time=5.371..5.372 rows=31.33 loops=3)
+              Sort Key: posted_at DESC
+              Sort Method: quicksort  Memory: 31kB
+              Buffers: shared hit=4628
+              Worker 0:  Sort Method: quicksort  Memory: 29kB
+              Worker 1:  Sort Method: quicksort  Memory: 30kB
+              ->  Parallel Seq Scan on listings  (cost=0.00..5677.03 rows=12 width=70) (actual time=0.341..5.329 rows=59.67 loops=3)
+                    Filter: ((price >= '300000'::numeric) AND (price <= '600000'::numeric) AND (category_id = 2) AND (city_id = 1) AND (status = 'ACTIVE'::text))
+                    Rows Removed by Filter: 39940
+                    Buffers: shared hit=4552
+Planning:
+  Buffers: shared hit=155
+Planning Time: 0.292 ms
+Execution Time: 7.908 ms

@@ -1,0 +1,111 @@
+=== R06 run 1 ===
+Sort  (cost=29303.86..29303.87 rows=4 width=53) (actual time=61.515..61.531 rows=13.00 loops=1)
+  Sort Key: m.sent_at DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=37931
+  ->  Nested Loop  (cost=7877.87..29303.82 rows=4 width=53) (actual time=10.978..61.519 rows=13.00 loops=1)
+        Buffers: shared hit=37928
+        ->  Gather  (cost=2794.74..8971.24 rows=4 width=24) (actual time=5.383..6.773 rows=13.00 loops=1)
+              Workers Planned: 2
+              Workers Launched: 2
+              Buffers: shared hit=5896
+              ->  Hash Join  (cost=1794.74..7970.84 rows=2 width=24) (actual time=8.400..12.968 rows=4.33 loops=3)
+                    Hash Cond: (l.listing_id = t.listing_id)
+                    Join Filter: ((t.buyer_id = 1042) OR (l.seller_id = 1042))
+                    Rows Removed by Join Filter: 19947
+                    Buffers: shared hit=5896
+                    ->  Parallel Seq Scan on listings l  (cost=0.00..5052.00 rows=50000 width=32) (actual time=0.005..1.643 rows=40000.00 loops=3)
+                          Buffers: shared hit=4552
+                    ->  Hash  (cost=1046.55..1046.55 rows=59855 width=24) (actual time=5.114..5.114 rows=59855.00 loops=3)
+                          Buckets: 65536  Batches: 1  Memory Usage: 3786kB
+                          Buffers: shared hit=1344
+                          ->  Seq Scan on chat_threads t  (cost=0.00..1046.55 rows=59855 width=24) (actual time=0.015..2.253 rows=59855.00 loops=3)
+                                Buffers: shared hit=1344
+        ->  Limit  (cost=5083.13..5083.14 rows=1 width=29) (actual time=4.211..4.211 rows=1.00 loops=13)
+              Buffers: shared hit=32032
+              ->  Sort  (cost=5083.13..5083.14 rows=4 width=29) (actual time=4.210..4.210 rows=1.00 loops=13)
+                    Sort Key: m.sent_at DESC
+                    Sort Method: top-N heapsort  Memory: 25kB
+                    Buffers: shared hit=32032
+                    ->  Seq Scan on chat_messages m  (cost=0.00..5083.11 rows=4 width=29) (actual time=2.517..4.206 rows=3.46 loops=13)
+                          Filter: (thread_id = t.thread_id)
+                          Rows Removed by Filter: 209526
+                          Buffers: shared hit=32032
+Planning:
+  Buffers: shared hit=305
+Planning Time: 0.490 ms
+Execution Time: 61.599 ms
+=== R06 run 2 ===
+Sort  (cost=29303.86..29303.87 rows=4 width=53) (actual time=62.960..62.975 rows=13.00 loops=1)
+  Sort Key: m.sent_at DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=37931
+  ->  Nested Loop  (cost=7877.87..29303.82 rows=4 width=53) (actual time=10.968..62.962 rows=13.00 loops=1)
+        Buffers: shared hit=37928
+        ->  Gather  (cost=2794.74..8971.24 rows=4 width=24) (actual time=5.358..7.766 rows=13.00 loops=1)
+              Workers Planned: 2
+              Workers Launched: 2
+              Buffers: shared hit=5896
+              ->  Hash Join  (cost=1794.74..7970.84 rows=2 width=24) (actual time=6.573..12.876 rows=4.33 loops=3)
+                    Hash Cond: (l.listing_id = t.listing_id)
+                    Join Filter: ((t.buyer_id = 1042) OR (l.seller_id = 1042))
+                    Rows Removed by Join Filter: 19947
+                    Buffers: shared hit=5896
+                    ->  Parallel Seq Scan on listings l  (cost=0.00..5052.00 rows=50000 width=32) (actual time=0.005..1.630 rows=40000.00 loops=3)
+                          Buffers: shared hit=4552
+                    ->  Hash  (cost=1046.55..1046.55 rows=59855 width=24) (actual time=5.098..5.098 rows=59855.00 loops=3)
+                          Buckets: 65536  Batches: 1  Memory Usage: 3786kB
+                          Buffers: shared hit=1344
+                          ->  Seq Scan on chat_threads t  (cost=0.00..1046.55 rows=59855 width=24) (actual time=0.016..2.248 rows=59855.00 loops=3)
+                                Buffers: shared hit=1344
+        ->  Limit  (cost=5083.13..5083.14 rows=1 width=29) (actual time=4.245..4.245 rows=1.00 loops=13)
+              Buffers: shared hit=32032
+              ->  Sort  (cost=5083.13..5083.14 rows=4 width=29) (actual time=4.245..4.245 rows=1.00 loops=13)
+                    Sort Key: m.sent_at DESC
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=32032
+                    ->  Seq Scan on chat_messages m  (cost=0.00..5083.11 rows=4 width=29) (actual time=2.531..4.241 rows=3.46 loops=13)
+                          Filter: (thread_id = t.thread_id)
+                          Rows Removed by Filter: 209526
+                          Buffers: shared hit=32032
+Planning:
+  Buffers: shared hit=305
+Planning Time: 0.418 ms
+Execution Time: 63.029 ms
+=== R06 run 3 ===
+Sort  (cost=29303.86..29303.87 rows=4 width=53) (actual time=63.371..63.387 rows=13.00 loops=1)
+  Sort Key: m.sent_at DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=37931
+  ->  Nested Loop  (cost=7877.87..29303.82 rows=4 width=53) (actual time=10.962..63.375 rows=13.00 loops=1)
+        Buffers: shared hit=37928
+        ->  Gather  (cost=2794.74..8971.24 rows=4 width=24) (actual time=5.354..7.726 rows=13.00 loops=1)
+              Workers Planned: 2
+              Workers Launched: 2
+              Buffers: shared hit=5896
+              ->  Hash Join  (cost=1794.74..7970.84 rows=2 width=24) (actual time=6.602..12.769 rows=4.33 loops=3)
+                    Hash Cond: (l.listing_id = t.listing_id)
+                    Join Filter: ((t.buyer_id = 1042) OR (l.seller_id = 1042))
+                    Rows Removed by Join Filter: 19947
+                    Buffers: shared hit=5896
+                    ->  Parallel Seq Scan on listings l  (cost=0.00..5052.00 rows=50000 width=32) (actual time=0.005..1.641 rows=40000.00 loops=3)
+                          Buffers: shared hit=4552
+                    ->  Hash  (cost=1046.55..1046.55 rows=59855 width=24) (actual time=5.111..5.111 rows=59855.00 loops=3)
+                          Buckets: 65536  Batches: 1  Memory Usage: 3786kB
+                          Buffers: shared hit=1344
+                          ->  Seq Scan on chat_threads t  (cost=0.00..1046.55 rows=59855 width=24) (actual time=0.015..2.238 rows=59855.00 loops=3)
+                                Buffers: shared hit=1344
+        ->  Limit  (cost=5083.13..5083.14 rows=1 width=29) (actual time=4.280..4.280 rows=1.00 loops=13)
+              Buffers: shared hit=32032
+              ->  Sort  (cost=5083.13..5083.14 rows=4 width=29) (actual time=4.280..4.280 rows=1.00 loops=13)
+                    Sort Key: m.sent_at DESC
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=32032
+                    ->  Seq Scan on chat_messages m  (cost=0.00..5083.11 rows=4 width=29) (actual time=2.546..4.277 rows=3.46 loops=13)
+                          Filter: (thread_id = t.thread_id)
+                          Rows Removed by Filter: 209526
+                          Buffers: shared hit=32032
+Planning:
+  Buffers: shared hit=305
+Planning Time: 0.431 ms
+Execution Time: 63.441 ms
