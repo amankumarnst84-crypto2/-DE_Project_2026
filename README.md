@@ -1,3 +1,7 @@
+> **Team guide:** [CP1 setup](CP1_START_HERE.md) · [Baseline results](docs/03_baseline_timings.md) · [Optimization report](docs/04_optimization_report.md) · [Reproduce benchmarks](docs/benchmark_reproduction.md) · [Read the evidence](docs/reading_results.md) · [Correctness cases](docs/query_correctness_cases.md) · [Contribute](CONTRIBUTING.md)
+>
+> Offline evidence check: `python3 scripts/check_benchmarks.py`. This checks saved run counts and arithmetic; it does not rerun PostgreSQL.
+
 # OLX Used Goods Marketplace Database: DBMS Project
 
 **Course:** Database Management Systems · **Year:** B.Tech 2nd year · **Team size:** 4
