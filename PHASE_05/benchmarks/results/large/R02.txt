@@ -1,0 +1,45 @@
+=== R02 run 1 ===
+Sort  (cost=14.93..14.93 rows=1 width=106) (actual time=7.581..7.583 rows=85.00 loops=1)
+  Sort Key: price
+  Sort Method: quicksort  Memory: 42kB
+  Buffers: shared hit=5 read=283
+  ->  Index Scan using idx_listings_active_car_filters on listings  (cost=0.27..14.92 rows=1 width=106) (actual time=0.016..7.547 rows=85.00 loops=1)
+        Index Cond: (((attributes ->> 'year'::text))::integer >= 2018)
+        Filter: (((attributes ->> 'km_driven'::text))::integer <= 60000)
+        Rows Removed by Filter: 195
+        Index Searches: 1
+        Buffers: shared hit=2 read=283
+Planning:
+  Buffers: shared hit=410
+Planning Time: 0.611 ms
+Execution Time: 7.600 ms
+=== R02 run 2 ===
+Sort  (cost=14.93..14.93 rows=1 width=106) (actual time=0.502..0.504 rows=85.00 loops=1)
+  Sort Key: price
+  Sort Method: quicksort  Memory: 42kB
+  Buffers: shared hit=288
+  ->  Index Scan using idx_listings_active_car_filters on listings  (cost=0.27..14.92 rows=1 width=106) (actual time=0.009..0.466 rows=85.00 loops=1)
+        Index Cond: (((attributes ->> 'year'::text))::integer >= 2018)
+        Filter: (((attributes ->> 'km_driven'::text))::integer <= 60000)
+        Rows Removed by Filter: 195
+        Index Searches: 1
+        Buffers: shared hit=285
+Planning:
+  Buffers: shared hit=410
+Planning Time: 0.681 ms
+Execution Time: 0.525 ms
+=== R02 run 3 ===
+Sort  (cost=14.93..14.93 rows=1 width=106) (actual time=0.407..0.409 rows=85.00 loops=1)
+  Sort Key: price
+  Sort Method: quicksort  Memory: 42kB
+  Buffers: shared hit=288
+  ->  Index Scan using idx_listings_active_car_filters on listings  (cost=0.27..14.92 rows=1 width=106) (actual time=0.007..0.384 rows=85.00 loops=1)
+        Index Cond: (((attributes ->> 'year'::text))::integer >= 2018)
+        Filter: (((attributes ->> 'km_driven'::text))::integer <= 60000)
+        Rows Removed by Filter: 195
+        Index Searches: 1
+        Buffers: shared hit=285
+Planning:
+  Buffers: shared hit=410
+Planning Time: 0.630 ms
+Execution Time: 0.427 ms

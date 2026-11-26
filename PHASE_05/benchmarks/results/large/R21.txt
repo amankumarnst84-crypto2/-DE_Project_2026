@@ -1,0 +1,93 @@
+=== R21 run 1 ===
+Limit  (cost=67581.31..67581.36 rows=20 width=60) (actual time=166.342..166.344 rows=20.00 loops=1)
+  Buffers: shared hit=350 read=14862 written=1
+  ->  Sort  (cost=67581.31..67770.46 rows=75661 width=60) (actual time=166.342..166.342 rows=20.00 loops=1)
+        Sort Key: (round(avg(r.stars), 2)) DESC, (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=350 read=14862 written=1
+        ->  GroupAggregate  (cost=20.08..65568.00 rows=75661 width=60) (actual time=0.037..166.284 rows=260.00 loops=1)
+              Group Key: r.seller_id, u.full_name
+              Filter: (count(*) >= 5)
+              Rows Removed by Filter: 178136
+              Buffers: shared hit=347 read=14862 written=1
+              ->  Incremental Sort  (cost=20.08..59704.24 rows=226984 width=22) (actual time=0.028..130.566 rows=226984.00 loops=1)
+                    Sort Key: r.seller_id, u.full_name
+                    Presorted Key: r.seller_id
+                    Full-sort Groups: 7027  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+                    Buffers: shared hit=347 read=14862 written=1
+                    ->  Merge Join  (cost=19.85..49489.96 rows=226984 width=22) (actual time=0.012..115.463 rows=226984.00 loops=1)
+                          Merge Cond: (r.seller_id = u.user_id)
+                          Buffers: shared hit=344 read=14862 written=1
+                          ->  Index Only Scan using idx_seller_ratings_seller_stars on seller_ratings r  (cost=0.42..6909.18 rows=226984 width=10) (actual time=0.002..9.023 rows=226984.00 loops=1)
+                                Heap Fetches: 0
+                                Index Searches: 1
+                                Buffers: shared hit=4 read=869
+                          ->  Index Scan using users_pkey on users u  (cost=0.42..37244.48 rows=1000000 width=20) (actual time=0.008..69.032 rows=999991.00 loops=1)
+                                Index Searches: 1
+                                Buffers: shared hit=340 read=13993 written=1
+Planning:
+  Buffers: shared hit=221 read=23
+Planning Time: 0.867 ms
+Execution Time: 166.373 ms
+=== R21 run 2 ===
+Limit  (cost=67581.31..67581.36 rows=20 width=60) (actual time=169.827..169.829 rows=20.00 loops=1)
+  Buffers: shared hit=550 read=14662 written=1
+  ->  Sort  (cost=67581.31..67770.46 rows=75661 width=60) (actual time=169.827..169.828 rows=20.00 loops=1)
+        Sort Key: (round(avg(r.stars), 2)) DESC, (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=550 read=14662 written=1
+        ->  GroupAggregate  (cost=20.08..65568.00 rows=75661 width=60) (actual time=0.047..169.752 rows=260.00 loops=1)
+              Group Key: r.seller_id, u.full_name
+              Filter: (count(*) >= 5)
+              Rows Removed by Filter: 178136
+              Buffers: shared hit=547 read=14662 written=1
+              ->  Incremental Sort  (cost=20.08..59704.24 rows=226984 width=22) (actual time=0.038..133.174 rows=226984.00 loops=1)
+                    Sort Key: r.seller_id, u.full_name
+                    Presorted Key: r.seller_id
+                    Full-sort Groups: 7027  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+                    Buffers: shared hit=547 read=14662 written=1
+                    ->  Merge Join  (cost=19.85..49489.96 rows=226984 width=22) (actual time=0.017..117.780 rows=226984.00 loops=1)
+                          Merge Cond: (r.seller_id = u.user_id)
+                          Buffers: shared hit=544 read=14662 written=1
+                          ->  Index Only Scan using idx_seller_ratings_seller_stars on seller_ratings r  (cost=0.42..6909.18 rows=226984 width=10) (actual time=0.003..8.763 rows=226984.00 loops=1)
+                                Heap Fetches: 0
+                                Index Searches: 1
+                                Buffers: shared hit=5 read=868
+                          ->  Index Scan using users_pkey on users u  (cost=0.42..37244.48 rows=1000000 width=20) (actual time=0.011..70.831 rows=999991.00 loops=1)
+                                Index Searches: 1
+                                Buffers: shared hit=539 read=13794 written=1
+Planning:
+  Buffers: shared hit=226 read=18
+Planning Time: 0.701 ms
+Execution Time: 169.870 ms
+=== R21 run 3 ===
+Limit  (cost=67581.31..67581.36 rows=20 width=60) (actual time=148.193..148.195 rows=20.00 loops=1)
+  Buffers: shared hit=14744 read=468
+  ->  Sort  (cost=67581.31..67770.46 rows=75661 width=60) (actual time=148.192..148.193 rows=20.00 loops=1)
+        Sort Key: (round(avg(r.stars), 2)) DESC, (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=14744 read=468
+        ->  GroupAggregate  (cost=20.08..65568.00 rows=75661 width=60) (actual time=0.033..148.136 rows=260.00 loops=1)
+              Group Key: r.seller_id, u.full_name
+              Filter: (count(*) >= 5)
+              Rows Removed by Filter: 178136
+              Buffers: shared hit=14741 read=468
+              ->  Incremental Sort  (cost=20.08..59704.24 rows=226984 width=22) (actual time=0.025..112.091 rows=226984.00 loops=1)
+                    Sort Key: r.seller_id, u.full_name
+                    Presorted Key: r.seller_id
+                    Full-sort Groups: 7027  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+                    Buffers: shared hit=14741 read=468
+                    ->  Merge Join  (cost=19.85..49489.96 rows=226984 width=22) (actual time=0.011..97.296 rows=226984.00 loops=1)
+                          Merge Cond: (r.seller_id = u.user_id)
+                          Buffers: shared hit=14738 read=468
+                          ->  Index Only Scan using idx_seller_ratings_seller_stars on seller_ratings r  (cost=0.42..6909.18 rows=226984 width=10) (actual time=0.002..7.464 rows=226984.00 loops=1)
+                                Heap Fetches: 0
+                                Index Searches: 1
+                                Buffers: shared hit=813 read=60
+                          ->  Index Scan using users_pkey on users u  (cost=0.42..37244.48 rows=1000000 width=20) (actual time=0.006..52.632 rows=999991.00 loops=1)
+                                Index Searches: 1
+                                Buffers: shared hit=13925 read=408
+Planning:
+  Buffers: shared hit=230 read=14
+Planning Time: 0.482 ms
+Execution Time: 148.223 ms

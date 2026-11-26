@@ -1,0 +1,31 @@
+query_id,type,avg_ms,median_ms,min_ms,max_ms,scan_nodes
+R01,READ,0.108,0.096,0.092,0.136,Index Scan using idx_listings_active_city_category_posted on listings
+R02,READ,2.851,0.525,0.427,7.600,Index Scan using idx_listings_active_car_filters on listings
+R03,READ,23.581,17.424,10.076,43.244,Bitmap Heap Scan on listings | Bitmap Index Scan on idx_listings_active_title_trgm
+R04,READ,0.307,0.057,0.057,0.806,Index Scan using listings_pkey on listings | Index Scan using users_pkey on users | Index Only Scan using idx_seller_ratings_seller_stars on seller_ratings
+R05,READ,0.069,0.065,0.063,0.080,Index Only Scan using idx_listings_seller_status_views on listings
+R06,READ,1.554,0.155,0.147,4.360,Index Only Scan using idx_chat_threads_buyer_thread on chat_threads | Index Only Scan using idx_listings_seller_status_views on listings | Index Scan using chat_threads_listing_id_buyer_id_key on chat_threads | Index Scan using chat_threads_pkey on chat_threads | Index Scan using listings_pkey on listings | Index Scan using idx_chat_messages_thread_time on chat_messages
+R07,READ,0.389,0.098,0.094,0.975,Index Only Scan using idx_chat_threads_buyer_thread on chat_threads | Index Only Scan using idx_listings_seller_status_views on listings | Index Scan using chat_threads_listing_id_buyer_id_key on chat_threads | Index Only Scan using idx_chat_messages_unread_thread on chat_messages
+R08,READ,43.112,35.266,34.827,59.243,Bitmap Heap Scan on listings | Bitmap Index Scan on idx_listings_model_posted
+R09,READ,0.210,0.203,0.201,0.225,Index Only Scan using idx_listings_active_category_coordinates on listings
+R10,READ,0.889,0.878,0.831,0.958,Index Only Scan using idx_listings_active_expires on listings
+R11,READ,23.420,19.082,18.753,32.426,Index Only Scan using idx_reports_open_listing on reports | Index Scan using listings_pkey on listings
+R12,READ,773.144,768.280,758.746,792.407,Seq Scan on listings
+R13,READ,208.830,207.955,207.172,211.364,Seq Scan on listings | Seq Scan on boost_packages
+R14,READ,32.320,31.830,31.504,33.626,Index Only Scan using idx_listings_sold_at on listings | Seq Scan on categories
+R15,READ,234.026,229.954,225.076,247.047,Seq Scan on listings | Seq Scan on offers | Seq Scan on categories
+R16,READ,18.133,17.762,17.416,19.222,Index Only Scan using idx_listings_active_expires on listings | Index Only Scan using idx_favourites_saved_listing on favourites
+R17,READ,192.311,192.545,189.888,194.501,Seq Scan on listings | Seq Scan on categories
+R18,READ,1236.503,1232.701,1231.412,1245.396,Seq Scan on listings
+R19,READ,163.516,13.644,13.291,463.612,Index Only Scan using idx_listings_active_city_category_posted on listings | Index Scan using chat_threads_listing_id_buyer_id_key on chat_threads | Index Only Scan using idx_chat_messages_thread_time on chat_messages
+R20,READ,18.795,18.527,18.284,19.574,Index Only Scan using idx_listings_model_posted on listings
+R21,READ,161.489,166.373,148.223,169.870,Index Only Scan using idx_seller_ratings_seller_stars on seller_ratings | Index Scan using users_pkey on users
+R22,READ,3.463,3.168,3.150,4.070,Index Only Scan using idx_listings_posted_desc on listings
+R23,READ,0.211,0.027,0.023,0.582,Index Scan using users_phone_key on users
+R24,READ,19.796,18.482,18.008,22.898,Index Only Scan using idx_listings_active_city_category_posted on listings | Seq Scan on categories
+R25,READ,826.653,842.468,793.873,843.618,Seq Scan on listings | Seq Scan on chat_threads | Index Only Scan using idx_chat_messages_thread_time on chat_messages | Seq Scan on categories
+W01,WRITE,1.534,1.233,1.112,2.258,(no scan)
+W02,WRITE,0.358,0.058,0.056,0.960,Index Only Scan using idx_listings_seller_status_views on listings | Index Scan using listings_pkey on listings
+W03,WRITE,0.552,0.371,0.348,0.938,Index Only Scan using idx_chat_threads_buyer_thread on chat_threads
+W04,WRITE,7168.431,7333.070,5771.372,8400.852,Index Scan using idx_listings_active_expires on listings
+W05,WRITE,0.193,0.052,0.051,0.476,Index Only Scan using idx_offers_listing_price on offers | Index Scan using idx_offers_listing_price on offers

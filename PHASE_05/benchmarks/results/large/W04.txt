@@ -1,0 +1,36 @@
+=== W04 run 1 ===
+Update on listings  (cost=0.42..44360.92 rows=0 width=0) (actual time=8400.808..8400.809 rows=0.00 loops=1)
+  Buffers: shared hit=717270 read=129076 dirtied=129807 written=110591
+  ->  Index Scan using idx_listings_active_expires on listings  (cost=0.42..44360.92 rows=181988 width=38) (actual time=0.019..181.755 rows=45275.00 loops=1)
+        Index Cond: (expires_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone)
+        Filter: (status = 'ACTIVE'::text)
+        Index Searches: 1
+        Buffers: shared hit=49 read=36019 written=30128
+Planning:
+  Buffers: shared hit=336
+Planning Time: 0.482 ms
+Execution Time: 8400.852 ms
+=== W04 run 2 ===
+Update on listings  (cost=0.42..45139.76 rows=0 width=0) (actual time=5771.273..5771.274 rows=0.00 loops=1)
+  Buffers: shared hit=724955 read=131278 dirtied=131979 written=129805
+  ->  Index Scan using idx_listings_active_expires on listings  (cost=0.42..45139.76 rows=185187 width=38) (actual time=0.051..1979.988 rows=45275.00 loops=1)
+        Index Cond: (expires_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone)
+        Filter: (status = 'ACTIVE'::text)
+        Index Searches: 1
+        Buffers: shared hit=87 read=35981 dirtied=35646 written=34714
+Planning:
+  Buffers: shared hit=279 read=47 written=47
+Planning Time: 1.479 ms
+Execution Time: 5771.372 ms
+=== W04 run 3 ===
+Update on listings  (cost=0.42..45924.39 rows=0 width=0) (actual time=7332.966..7332.966 rows=0.00 loops=1)
+  Buffers: shared hit=726710 read=131903 dirtied=131899 written=128656
+  ->  Index Scan using idx_listings_active_expires on listings  (cost=0.42..45924.39 rows=188396 width=38) (actual time=0.041..1355.907 rows=45275.00 loops=1)
+        Index Cond: (expires_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone)
+        Filter: (status = 'ACTIVE'::text)
+        Index Searches: 1
+        Buffers: shared hit=150 read=35918 dirtied=35574 written=34184
+Planning:
+  Buffers: shared hit=283 read=53 written=35
+Planning Time: 0.931 ms
+Execution Time: 7333.070 ms

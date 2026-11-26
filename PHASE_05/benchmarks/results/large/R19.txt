@@ -1,0 +1,102 @@
+=== R19 run 1 ===
+Sort  (cost=86244.58..86257.88 rows=5320 width=41) (actual time=463.350..463.488 rows=5342.00 loops=1)
+  Sort Key: (count(t.thread_id)) DESC
+  Sort Method: quicksort  Memory: 503kB
+  Buffers: shared hit=21780 read=7976
+  ->  Nested Loop Left Join  (cost=16.49..85915.35 rows=5320 width=41) (actual time=0.055..462.829 rows=5342.00 loops=1)
+        Buffers: shared hit=21777 read=7976
+        ->  Index Only Scan using idx_listings_active_city_category_posted on listings l  (cost=0.42..294.82 rows=5320 width=25) (actual time=0.040..0.441 rows=5342.00 loops=1)
+              Index Cond: ((city_id = 1) AND (category_id = 2))
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=11 read=51
+        ->  Aggregate  (cost=16.07..16.08 rows=1 width=16) (actual time=0.086..0.086 rows=1.00 loops=5342)
+              Buffers: shared hit=21766 read=7925
+              ->  Nested Loop Left Join  (cost=2.21..16.06 rows=2 width=16) (actual time=0.074..0.086 rows=0.58 loops=5342)
+                    Buffers: shared hit=21766 read=7925
+                    ->  Index Scan using chat_threads_listing_id_buyer_id_key on chat_threads t  (cost=0.43..12.46 rows=2 width=8) (actual time=0.036..0.036 rows=0.58 loops=5342)
+                          Index Cond: (listing_id = l.listing_id)
+                          Index Searches: 5342
+                          Buffers: shared hit=14135 read=4968
+                    ->  Result  (cost=1.78..1.79 rows=1 width=8) (actual time=0.086..0.086 rows=1.00 loops=3078)
+                          Buffers: shared hit=7631 read=2957
+                          InitPlan 1
+                            ->  Limit  (cost=0.43..1.78 rows=1 width=8) (actual time=0.086..0.086 rows=1.00 loops=3078)
+                                  Buffers: shared hit=7631 read=2957
+                                  ->  Index Only Scan using idx_chat_messages_thread_time on chat_messages m  (cost=0.43..8.54 rows=6 width=8) (actual time=0.086..0.086 rows=1.00 loops=3078)
+                                        Index Cond: (thread_id = t.thread_id)
+                                        Heap Fetches: 0
+                                        Index Searches: 3078
+                                        Buffers: shared hit=7631 read=2957
+Planning:
+  Buffers: shared hit=544 read=7
+Planning Time: 0.907 ms
+Execution Time: 463.612 ms
+=== R19 run 2 ===
+Sort  (cost=86244.58..86257.88 rows=5320 width=41) (actual time=13.434..13.531 rows=5342.00 loops=1)
+  Sort Key: (count(t.thread_id)) DESC
+  Sort Method: quicksort  Memory: 503kB
+  Buffers: shared hit=29756
+  ->  Nested Loop Left Join  (cost=16.49..85915.35 rows=5320 width=41) (actual time=0.037..13.107 rows=5342.00 loops=1)
+        Buffers: shared hit=29753
+        ->  Index Only Scan using idx_listings_active_city_category_posted on listings l  (cost=0.42..294.82 rows=5320 width=25) (actual time=0.028..0.248 rows=5342.00 loops=1)
+              Index Cond: ((city_id = 1) AND (category_id = 2))
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=62
+        ->  Aggregate  (cost=16.07..16.08 rows=1 width=16) (actual time=0.002..0.002 rows=1.00 loops=5342)
+              Buffers: shared hit=29691
+              ->  Nested Loop Left Join  (cost=2.21..16.06 rows=2 width=16) (actual time=0.002..0.002 rows=0.58 loops=5342)
+                    Buffers: shared hit=29691
+                    ->  Index Scan using chat_threads_listing_id_buyer_id_key on chat_threads t  (cost=0.43..12.46 rows=2 width=8) (actual time=0.001..0.001 rows=0.58 loops=5342)
+                          Index Cond: (listing_id = l.listing_id)
+                          Index Searches: 5342
+                          Buffers: shared hit=19103
+                    ->  Result  (cost=1.78..1.79 rows=1 width=8) (actual time=0.002..0.002 rows=1.00 loops=3078)
+                          Buffers: shared hit=10588
+                          InitPlan 1
+                            ->  Limit  (cost=0.43..1.78 rows=1 width=8) (actual time=0.002..0.002 rows=1.00 loops=3078)
+                                  Buffers: shared hit=10588
+                                  ->  Index Only Scan using idx_chat_messages_thread_time on chat_messages m  (cost=0.43..8.54 rows=6 width=8) (actual time=0.002..0.002 rows=1.00 loops=3078)
+                                        Index Cond: (thread_id = t.thread_id)
+                                        Heap Fetches: 0
+                                        Index Searches: 3078
+                                        Buffers: shared hit=10588
+Planning:
+  Buffers: shared hit=551
+Planning Time: 0.804 ms
+Execution Time: 13.644 ms
+=== R19 run 3 ===
+Sort  (cost=86244.58..86257.88 rows=5320 width=41) (actual time=13.080..13.176 rows=5342.00 loops=1)
+  Sort Key: (count(t.thread_id)) DESC
+  Sort Method: quicksort  Memory: 503kB
+  Buffers: shared hit=29756
+  ->  Nested Loop Left Join  (cost=16.49..85915.35 rows=5320 width=41) (actual time=0.035..12.757 rows=5342.00 loops=1)
+        Buffers: shared hit=29753
+        ->  Index Only Scan using idx_listings_active_city_category_posted on listings l  (cost=0.42..294.82 rows=5320 width=25) (actual time=0.025..0.246 rows=5342.00 loops=1)
+              Index Cond: ((city_id = 1) AND (category_id = 2))
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=62
+        ->  Aggregate  (cost=16.07..16.08 rows=1 width=16) (actual time=0.002..0.002 rows=1.00 loops=5342)
+              Buffers: shared hit=29691
+              ->  Nested Loop Left Join  (cost=2.21..16.06 rows=2 width=16) (actual time=0.002..0.002 rows=0.58 loops=5342)
+                    Buffers: shared hit=29691
+                    ->  Index Scan using chat_threads_listing_id_buyer_id_key on chat_threads t  (cost=0.43..12.46 rows=2 width=8) (actual time=0.001..0.001 rows=0.58 loops=5342)
+                          Index Cond: (listing_id = l.listing_id)
+                          Index Searches: 5342
+                          Buffers: shared hit=19103
+                    ->  Result  (cost=1.78..1.79 rows=1 width=8) (actual time=0.002..0.002 rows=1.00 loops=3078)
+                          Buffers: shared hit=10588
+                          InitPlan 1
+                            ->  Limit  (cost=0.43..1.78 rows=1 width=8) (actual time=0.002..0.002 rows=1.00 loops=3078)
+                                  Buffers: shared hit=10588
+                                  ->  Index Only Scan using idx_chat_messages_thread_time on chat_messages m  (cost=0.43..8.54 rows=6 width=8) (actual time=0.001..0.001 rows=1.00 loops=3078)
+                                        Index Cond: (thread_id = t.thread_id)
+                                        Heap Fetches: 0
+                                        Index Searches: 3078
+                                        Buffers: shared hit=10588
+Planning:
+  Buffers: shared hit=551
+Planning Time: 0.728 ms
+Execution Time: 13.291 ms

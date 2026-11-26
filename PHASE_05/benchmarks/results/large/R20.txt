@@ -1,0 +1,63 @@
+=== R20 run 1 ===
+WindowAgg  (cost=19454.70..23958.32 rows=128630 width=44) (actual time=14.587..19.531 rows=30.00 loops=1)
+  Window: w1 AS (ORDER BY ((listings.posted_at)::date))
+  Storage: Memory  Maximum Storage: 17kB
+  Buffers: shared hit=40 read=1002
+  ->  GroupAggregate  (cost=19454.66..22028.87 rows=128630 width=12) (actual time=14.399..19.513 rows=30.00 loops=1)
+        Group Key: ((listings.posted_at)::date)
+        Buffers: shared hit=40 read=1002
+        ->  Sort  (cost=19454.66..19776.77 rows=128845 width=4) (actual time=14.225..16.539 rows=131538.00 loops=1)
+              Sort Key: ((listings.posted_at)::date)
+              Sort Method: quicksort  Memory: 4096kB
+              Buffers: shared hit=40 read=1002
+              ->  Index Only Scan using idx_listings_model_posted on listings  (cost=0.43..8518.76 rows=128845 width=4) (actual time=0.045..10.774 rows=131538.00 loops=1)
+                    Index Cond: ((posted_at >= '2026-06-01'::date) AND (posted_at < '2026-07-01'::date))
+                    Heap Fetches: 0
+                    Index Searches: 20
+                    Buffers: shared hit=37 read=1002
+Planning:
+  Buffers: shared hit=385 read=3
+Planning Time: 0.565 ms
+Execution Time: 19.574 ms
+=== R20 run 2 ===
+WindowAgg  (cost=19454.70..23958.32 rows=128630 width=44) (actual time=13.252..18.246 rows=30.00 loops=1)
+  Window: w1 AS (ORDER BY ((listings.posted_at)::date))
+  Storage: Memory  Maximum Storage: 17kB
+  Buffers: shared hit=1042
+  ->  GroupAggregate  (cost=19454.66..22028.87 rows=128630 width=12) (actual time=13.074..18.227 rows=30.00 loops=1)
+        Group Key: ((listings.posted_at)::date)
+        Buffers: shared hit=1042
+        ->  Sort  (cost=19454.66..19776.77 rows=128845 width=4) (actual time=12.905..15.203 rows=131538.00 loops=1)
+              Sort Key: ((listings.posted_at)::date)
+              Sort Method: quicksort  Memory: 4096kB
+              Buffers: shared hit=1042
+              ->  Index Only Scan using idx_listings_model_posted on listings  (cost=0.43..8518.76 rows=128845 width=4) (actual time=0.033..9.455 rows=131538.00 loops=1)
+                    Index Cond: ((posted_at >= '2026-06-01'::date) AND (posted_at < '2026-07-01'::date))
+                    Heap Fetches: 0
+                    Index Searches: 20
+                    Buffers: shared hit=1039
+Planning:
+  Buffers: shared hit=388
+Planning Time: 0.506 ms
+Execution Time: 18.284 ms
+=== R20 run 3 ===
+WindowAgg  (cost=19454.70..23958.32 rows=128630 width=44) (actual time=13.548..18.490 rows=30.00 loops=1)
+  Window: w1 AS (ORDER BY ((listings.posted_at)::date))
+  Storage: Memory  Maximum Storage: 17kB
+  Buffers: shared hit=1042
+  ->  GroupAggregate  (cost=19454.66..22028.87 rows=128630 width=12) (actual time=13.365..18.471 rows=30.00 loops=1)
+        Group Key: ((listings.posted_at)::date)
+        Buffers: shared hit=1042
+        ->  Sort  (cost=19454.66..19776.77 rows=128845 width=4) (actual time=13.191..15.503 rows=131538.00 loops=1)
+              Sort Key: ((listings.posted_at)::date)
+              Sort Method: quicksort  Memory: 4096kB
+              Buffers: shared hit=1042
+              ->  Index Only Scan using idx_listings_model_posted on listings  (cost=0.43..8518.76 rows=128845 width=4) (actual time=0.037..9.711 rows=131538.00 loops=1)
+                    Index Cond: ((posted_at >= '2026-06-01'::date) AND (posted_at < '2026-07-01'::date))
+                    Heap Fetches: 0
+                    Index Searches: 20
+                    Buffers: shared hit=1039
+Planning:
+  Buffers: shared hit=388
+Planning Time: 0.499 ms
+Execution Time: 18.527 ms
